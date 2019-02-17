@@ -78,6 +78,10 @@ let enter  : ('a, 'a) t = thunk_call "enter"
 let update : ('a, 'a) t = fun x -> x
 let exit   : ('a, 'a) t = thunk_call "exit"
 
+let transition : ('a, 'a) t = thunk_call "transition"
+let duration time = const_call "duration" (Js.string @@ string_of_int time)
+let delay f = const_call "delay" (mb (fun this d i () -> Js.string @@ string_of_int (f this d i)))
+
 let filter f = const_call "filter" (mb (fun this d i () -> Js.bool (f this d i)))
 let sort   f = const_call "sort"   f
 let each   f = const_call "each"   (mb (fun this d i () -> (f this d i)))

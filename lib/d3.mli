@@ -198,6 +198,17 @@ val exit : ('a, 'a) t
 
     {{:https://github.com/mbostock/d3/wiki/Selections#exit}D3.js docs} *)
 
+(** {Transition routines} *)
+
+val transition : ('a, 'a) t
+(** [transition] schedules a transition for the selected elements *)
+
+val duration : int -> ('a, 'a) t
+(** [duration] specifies per-element duration in milliseconds for transitions *)
+
+val delay : ('a, int) fn -> ('a, 'a) t
+(** [delay] specifies per-element delay in milliseconds for transition *)
+
 (** {2 Selection manipulation} *)
 
 val filter : ('a, bool) fn -> ('a, 'a) t
